@@ -1,0 +1,17 @@
+<!doctype html>
+<html ng-app="project">
+    <head>
+        <script src="angular/angular.js"></script>
+        <script src="angular-resource/angular-resource.js"></script>
+        <script src="angular-route/angular-route.js"></script>
+        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+        <script src="scripts/app.js"></script>
+        <base href="/">
+    </head>
+    <body>
+        <div class="container">
+            <h1>JavaScript Projects</h1>
+            <div ng-view></div>
+        </div>
+    </body>
+</html>
