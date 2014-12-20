@@ -12,6 +12,8 @@
         </script>
     </head>
     <body>
+        <%= req.initialTemplate %>
+
         <div class="container">
             <h1>JavaScript Projects</h1>
             <div ng-view></div>
