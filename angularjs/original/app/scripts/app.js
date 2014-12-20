@@ -10,7 +10,8 @@ angular.module('project', ['ngResource', 'ngRoute'])
 
     })
 
-    .config(function ($routeProvider) {
+    .config(function ($locationProvider, $routeProvider) {
+        $locationProvider.html5Mode(true);
         $routeProvider
             .when('/', {
                 controller:'ListCtrl',
