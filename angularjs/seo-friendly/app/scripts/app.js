@@ -31,6 +31,13 @@ angular.module('project', ['ngResource', 'ngRoute'])
     })
 
     .controller('ListCtrl', function ($scope, Project) {
+
+        if (window.initialData) {
+            $scope.projects = window.initialData;
+            window.initialData = null;
+            return;
+        }
+
         $scope.projects = Project.query();
     })
 
@@ -44,7 +51,13 @@ angular.module('project', ['ngResource', 'ngRoute'])
     })
 
     .controller('EditCtrl', function($scope, $routeParams, $location, Project) {
-        $scope.project = Project.get({ _id: $routeParams._id });
+
+        if (window.initialData) {
+            $scope.projects = window.initialData;
+            window.initialData = null;
+        } else {
+            $scope.project = Project.get({ _id: $routeParams._id });
+        }
 
         $scope.save = function() {
             $scope.project.$update({ _id: $routeParams._id });

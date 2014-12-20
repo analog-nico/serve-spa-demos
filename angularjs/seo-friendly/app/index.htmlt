@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
         <script src="scripts/app.js"></script>
         <base href="/">
+        <script>
+            window.initialData = <%= JSON.stringify(req.initialData) %>;
+        </script>
     </head>
     <body>
         <div class="container">
