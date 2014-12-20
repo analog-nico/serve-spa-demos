@@ -1,0 +1,16 @@
+{
+  "name": "serve-spa-demos",
+  "version": "1.0.0",
+  "authors": [
+    "Nicolai Kamenzky (https://github.com/analog-nico)"
+  ],
+  "description": "Demonstrates the use of serve-spa with different SPA frameworks.",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-resource": "~1.3.8",
+    "angular-route": "~1.3.8",
+    "bootstrap": "~3.3.1"
+  }
+}
