@@ -53,7 +53,7 @@ angular.module('project', ['ngResource', 'ngRoute'])
     .controller('EditCtrl', function($scope, $routeParams, $location, Project) {
 
         if (window.initialData) {
-            $scope.projects = window.initialData;
+            $scope.project = window.initialData;
             window.initialData = null;
         } else {
             $scope.project = Project.get({ _id: $routeParams._id });

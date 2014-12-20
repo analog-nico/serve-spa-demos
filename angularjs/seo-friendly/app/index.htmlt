@@ -1,11 +1,11 @@
 <!doctype html>
 <html ng-app="project">
     <head>
-        <script src="angular/angular.js"></script>
-        <script src="angular-resource/angular-resource.js"></script>
-        <script src="angular-route/angular-route.js"></script>
-        <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
-        <script src="scripts/app.js"></script>
+        <script src="/angular/angular.js"></script>
+        <script src="/angular-resource/angular-resource.js"></script>
+        <script src="/angular-route/angular-route.js"></script>
+        <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
+        <script src="/scripts/app.js"></script>
         <base href="/">
         <script>
             window.initialData = <%= JSON.stringify(req.initialData) %>;
