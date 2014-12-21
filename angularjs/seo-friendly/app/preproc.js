@@ -53,6 +53,7 @@ module.exports = function (req, res, next) {
     } else if (url.pathname === '/new') {
 
         req.initialTemplate = getTemplate('detail.html');
+        next();
 
     } else {
         next();
