@@ -23,6 +23,11 @@ app.use('/bower_components', express.static(path.join(__dirname, '../../bower_co
 // Finally, serving the app with express.static
 app.use(express.static(path.join(__dirname, './app')));
 
+// To support pushState urls we need to serve index.html for all other paths
+app.use('*', function(req,res) {
+    res.sendFile(path.join(__dirname, './app/index.html'));
+});
+
 
 app.listen(3000, function () {
     console.log('Express server listening on port 3000');

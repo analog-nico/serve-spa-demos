@@ -23,7 +23,8 @@ app.use('/bower_components', express.static(path.join(__dirname, '../../bower_co
 
 // Finally, serving the app with serve-spa
 serveSpa(app, path.join(__dirname, './app'));
-// (Due to the pushState support serve-spa must be registered last.)
+
+// serve-spa covers pushState urls. For that, however, make sure to call it last.
 
 
 app.listen(3000, function () {
