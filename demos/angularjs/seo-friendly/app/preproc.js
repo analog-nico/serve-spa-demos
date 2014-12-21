@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var parseurl = require('parseurl');
-var api = require('../../../helpers/api-core.js');
+var api = require('../../../../helpers/api-core.js');
 
 
 var templates = {
