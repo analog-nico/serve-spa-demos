@@ -18,7 +18,7 @@ app.get('/api/projects/:id', api.read);
 app.put('/api/projects/:id', api.update);
 app.delete('/api/projects/:id', api.purge);
 
-// Serving the bower components still with express.static
+// Serving the bower components with express.static
 app.use('/bower_components', express.static(path.join(__dirname, '../../bower_components')));
 
 // Finally, serving the app with serve-spa
