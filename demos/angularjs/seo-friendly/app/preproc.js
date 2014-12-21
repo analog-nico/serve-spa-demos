@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var parseurl = require('parseurl');
+var express = require('express');
 var api = require('../../../../helpers/api-core.js');
 
 
@@ -19,51 +19,49 @@ function getTemplate(name) {
 }
 
 
-module.exports = function (req, res, next) {
+var router = express.Router();
 
+
+router.use('*', function (req, res, next) {
+    // Init the variables used in index.htmlt
     req.initialTemplate = null;
     req.initialData = null;
+    next();
+});
 
-    var url = parseurl(req);
+router.use('/', function (req, res, next) {
 
-    if (url.pathname === '/') {
+    req.initialTemplate = getTemplate('list.html');
 
-        // This is the path for projects list page
-
-        req.initialTemplate = getTemplate('list.html');
-
-        api.list(function (err, ret) {
-            if (!err) {
-                req.initialData = ret;
-            } else {
-                // We keep req.initialData === null so that the app will make the initial AJAX request as if serve-spa was not in use.
-                // -> So we don't need to reimplement the error handling server side.
-            }
-            next();
-        });
-
-    } else if (url.pathname.match(/^\/edit\//)) {
-
-        // This is the path for the project edit page
-
-        req.initialTemplate = getTemplate('detail.html');
-
-        api.read(url.pathname.substr('/edit/'.length), function (err, ret) {
-            if (!err) {
-                req.initialData = ret;
-            }
-            next();
-        });
-
-    } else if (url.pathname === '/new') {
-
-        // This is the path for the page to create a new project
-
-        req.initialTemplate = getTemplate('detail.html');
+    api.list(function (err, ret) {
+        if (!err) {
+            req.initialData = ret;
+        } else {
+            // We keep req.initialData === null so that the app will make the initial AJAX request as if serve-spa was not in use.
+            // -> So we don't need to reimplement the error handling server side.
+        }
         next();
+    });
 
-    } else {
+});
+
+router.use('/edit/:_id', function (req, res, next) {
+
+    req.initialTemplate = getTemplate('detail.html');
+
+    api.read(req.params._id, function (err, ret) {
+        if (!err) {
+            req.initialData = ret;
+        }
         next();
-    }
+    });
 
-};
+});
+
+router.use('/new', function (req, res, next) {
+    req.initialTemplate = getTemplate('detail.html');
+    next();
+});
+
+
+module.exports = router;

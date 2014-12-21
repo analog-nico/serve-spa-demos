@@ -10,7 +10,6 @@
     "express": "^4.10.6",
     "morgan": "^1.5.0",
     "nedb": "^1.0.0",
-    "parseurl": "^1.3.0",
     "serve-spa": "^0.1.0"
   },
   "devDependencies": {
