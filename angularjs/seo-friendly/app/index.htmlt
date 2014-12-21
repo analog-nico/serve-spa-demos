@@ -12,7 +12,11 @@
         </script>
     </head>
     <body>
-        <%= req.initialTemplate %>
+        <% if (req.initialTemplate !== null) { %>
+            <script type="text/ng-template" id="partials/<%= req.initialTemplate.name %>">
+                <%= req.initialTemplate.html %>
+            </script>
+        <% } %>
 
         <div class="container">
             <h1>JavaScript Projects</h1>

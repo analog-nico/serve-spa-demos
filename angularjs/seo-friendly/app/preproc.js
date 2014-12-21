@@ -12,15 +12,16 @@ var templates = {
 };
 
 function getTemplate(name) {
-    return '<script type="text/ng-template" id="partials/' + name + '">\n' +
-        templates[name] + '\n' +
-        '</script>';
+    return {
+        name: name,
+        html: templates[name]
+    };
 }
 
 
 module.exports = function (req, res, next) {
 
-    req.initialTemplate = '';
+    req.initialTemplate = null;
     req.initialData = null;
 
     var url = parseurl(req);
