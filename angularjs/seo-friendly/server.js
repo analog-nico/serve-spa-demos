@@ -3,7 +3,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
-var api = require('../../helpers/api.js');
+var api = require('../../helpers/api-middlewares.js');
 var serveSpa = require('serve-spa');
 
 

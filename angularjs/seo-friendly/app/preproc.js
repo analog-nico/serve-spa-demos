@@ -3,7 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var parseurl = require('parseurl');
-var store = require('../../../helpers/store.js');
+var api = require('../../../helpers/api-core.js');
 
 
 var templates = {
@@ -29,7 +29,7 @@ module.exports = function (req, res, next) {
 
         req.initialTemplate = getTemplate('list.html');
 
-        store.list(function (err, ret) {
+        api.list(function (err, ret) {
             if (!err) {
                 req.initialData = ret;
             } else {
@@ -43,7 +43,7 @@ module.exports = function (req, res, next) {
 
         req.initialTemplate = getTemplate('detail.html');
 
-        store.read(url.pathname.substr('/edit/'.length), function (err, ret) {
+        api.read(url.pathname.substr('/edit/'.length), function (err, ret) {
             if (!err) {
                 req.initialData = ret;
             }

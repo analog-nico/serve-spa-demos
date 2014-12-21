@@ -1,6 +1,6 @@
 'use strict';
 
-var store = require('./store.js');
+var api = require('./api-core.js');
 
 
 function respond(res) {
@@ -14,21 +14,21 @@ function respond(res) {
 }
 
 module.exports.list = function (req, res) {
-    store.list(respond(res));
+    api.list(respond(res));
 };
 
 module.exports.create = function (req, res) {
-    store.create(req.body, respond(res));
+    api.create(req.body, respond(res));
 };
 
 module.exports.read = function (req, res) {
-    store.read(req.params.id, respond(res));
+    api.read(req.params.id, respond(res));
 };
 
 module.exports.update = function (req, res) {
-    store.update(req.params.id, req.body, respond(res));
+    api.update(req.params.id, req.body, respond(res));
 };
 
 module.exports.purge = function (req, res) {
-    store.purge(req.params.id, respond(res));
+    api.purge(req.params.id, respond(res));
 };
