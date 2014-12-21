@@ -1,12 +1,14 @@
 'use strict';
 
 var express = require('express');
+var logger = require('morgan');
 var bodyParser = require('body-parser');
 var path = require('path');
 var api = require('../../helpers/api-middlewares.js');
 
 
 var app = express();
+app.use(logger('dev'));
 
 
 // Providing the REST API
