@@ -28,6 +28,8 @@ module.exports = function (req, res, next) {
 
     if (url.pathname === '/') {
 
+        // This is the path for projects list page
+
         req.initialTemplate = getTemplate('list.html');
 
         api.list(function (err, ret) {
@@ -42,6 +44,8 @@ module.exports = function (req, res, next) {
 
     } else if (url.pathname.match(/^\/edit\//)) {
 
+        // This is the path for the project edit page
+
         req.initialTemplate = getTemplate('detail.html');
 
         api.read(url.pathname.substr('/edit/'.length), function (err, ret) {
@@ -52,6 +56,8 @@ module.exports = function (req, res, next) {
         });
 
     } else if (url.pathname === '/new') {
+
+        // This is the path for the page to create a new project
 
         req.initialTemplate = getTemplate('detail.html');
         next();
