@@ -6,24 +6,17 @@ var express = require('express');
 var api = require('../../../../helpers/api-core.js');
 
 
+var router = express.Router();
+
+
 var templates = {
     'list.html': fs.readFileSync(path.join(__dirname, './partials/list.html')),
     'detail.html': fs.readFileSync(path.join(__dirname, './partials/detail.html'))
 };
 
-function getTemplate(name) {
-    return {
-        name: name,
-        html: templates[name]
-    };
-}
-
-
-var router = express.Router();
-
-
 router.use('*', function (req, res, next) {
     // Init the variables used in index.htmlt
+    req.availableTemplates = templates;
     req.initialTemplate = null;
     req.initialData = null;
     next();
@@ -31,7 +24,7 @@ router.use('*', function (req, res, next) {
 
 router.use('/', function (req, res, next) {
 
-    req.initialTemplate = getTemplate('list.html');
+    req.initialTemplate = 'list.html';
 
     api.list(function (err, ret) {
         if (!err) {
@@ -47,7 +40,7 @@ router.use('/', function (req, res, next) {
 
 router.use('/edit/:_id', function (req, res, next) {
 
-    req.initialTemplate = getTemplate('detail.html');
+    req.initialTemplate = 'detail.html';
 
     api.read(req.params._id, function (err, ret) {
         if (!err) {
@@ -59,7 +52,7 @@ router.use('/edit/:_id', function (req, res, next) {
 });
 
 router.use('/new', function (req, res, next) {
-    req.initialTemplate = getTemplate('detail.html');
+    req.initialTemplate = 'detail.html';
     next();
 });
 

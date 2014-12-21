@@ -13,8 +13,8 @@
     </head>
     <body>
         <% if (req.initialTemplate !== null) { %>
-            <script type="text/ng-template" id="partials/<%= req.initialTemplate.name %>">
-                <%= req.initialTemplate.html %>
+            <script type="text/ng-template" id="partials/<%= req.initialTemplate %>">
+                <%= req.availableTemplates[req.initialTemplate] %>
             </script>
         <% } %>
 
