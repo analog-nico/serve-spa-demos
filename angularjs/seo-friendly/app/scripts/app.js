@@ -35,10 +35,10 @@ angular.module('project', ['ngResource', 'ngRoute'])
         if (window.initialData) {
             $scope.projects = window.initialData;
             window.initialData = null;
-            return;
+        } else {
+            $scope.projects = Project.query();
         }
 
-        $scope.projects = Project.query();
     })
 
     .controller('CreateCtrl', function ($scope, $location, Project) {

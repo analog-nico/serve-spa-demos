@@ -8,20 +8,20 @@ var api = require('../../helpers/api.js');
 
 var app = express();
 
-// Serving the app with express.static
-
-app.use(express.static(path.join(__dirname, './app')));
-app.use(express.static(path.join(__dirname, '../../bower_components')));
-
 
 // Providing the REST API
-
 app.use(bodyParser.json());
 app.get('/api/projects', api.list);
 app.post('/api/projects', api.create);
 app.get('/api/projects/:id', api.read);
 app.put('/api/projects/:id', api.update);
 app.delete('/api/projects/:id', api.purge);
+
+// Serving the bower components with express.static
+app.use('/bower_components', express.static(path.join(__dirname, '../../bower_components')));
+
+// Finally, serving the app with express.static
+app.use(express.static(path.join(__dirname, './app')));
 
 
 app.listen(3000, function () {
