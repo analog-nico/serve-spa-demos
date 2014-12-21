@@ -14,7 +14,7 @@ var templates = {
     'detail.html': fs.readFileSync(path.join(__dirname, './partials/detail.html'))
 };
 
-router.use('*', function (req, res, next) {
+router.all('*', function (req, res, next) {
     // Init the variables used in index.htmlt
     req.availableTemplates = templates;
     req.initialTemplate = null;
@@ -22,7 +22,7 @@ router.use('*', function (req, res, next) {
     next();
 });
 
-router.use('/', function (req, res, next) {
+router.get('/', function (req, res, next) {
 
     req.initialTemplate = 'list.html';
 
@@ -38,7 +38,7 @@ router.use('/', function (req, res, next) {
 
 });
 
-router.use('/edit/:_id', function (req, res, next) {
+router.get('/edit/:_id', function (req, res, next) {
 
     req.initialTemplate = 'detail.html';
 
@@ -51,7 +51,7 @@ router.use('/edit/:_id', function (req, res, next) {
 
 });
 
-router.use('/new', function (req, res, next) {
+router.get('/new', function (req, res, next) {
     req.initialTemplate = 'detail.html';
     next();
 });
