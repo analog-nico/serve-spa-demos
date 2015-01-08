@@ -53,6 +53,7 @@ angular.module('project', ['ngResource', 'ngRoute'])
     .controller('EditCtrl', function($scope, $routeParams, $location, Project) {
 
         if (window.initialData) {
+            // FIXME: $scope.project does not implement $update and $remove
             $scope.project = window.initialData;
             window.initialData = null;
         } else {
