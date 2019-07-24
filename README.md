@@ -1,3 +1,5 @@
+**WARNING**: This repository is not maintained anymore.
+
 # Serve-SPA Demos
 
 Demonstrates the use of [Serve-SPA](https://github.com/analog-nico/serve-spa) with different SPA frameworks.
